@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
+import java.util.Set;
 
 public class BasePageObject {
 
@@ -62,6 +63,20 @@ public class BasePageObject {
     }
 
     /**
+     * Get title of current page
+     */
+    public String getCurrentPageTitle() {
+        return driver.getTitle();
+    }
+
+    /**
+     * Get source of current page
+     */
+    public String getCurrentPageSource() {
+        return driver.getPageSource();
+    }
+
+    /**
      * Wait for given number of seconds for element with given locator to be visible
      * on the page
      */
@@ -85,5 +100,24 @@ public class BasePageObject {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.alertIsPresent());
         return driver.switchTo().alert();
+    }
+
+    /**
+     * Switch to new window by title
+     */
+    public void switchToWindowWithTitle(String expectedTitle) {
+        // Switching to new window
+        String firstWindow = driver.getWindowHandle();
+
+        Set<String> allWindows = driver.getWindowHandles();
+
+        for (String allWindow : allWindows) {
+            if (!allWindow.equals(firstWindow)) {
+                driver.switchTo().window(allWindow);
+                if (getCurrentPageTitle().equals(expectedTitle)) {
+                    break;
+                }
+            }
+        }
     }
 }
