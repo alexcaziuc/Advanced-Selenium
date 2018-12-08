@@ -17,9 +17,9 @@ public class EditorTests extends TestUtilities {
         welcomePage.openPage();
 
         // Scroll to the bottom
-//        sleep(5000);
-//        welcomePage.scrollToBottom();
-//        sleep(5000);
+        sleep(5000);
+        welcomePage.scrollToBottom();
+        sleep(5000);
 
         // Click on WYSIWYG Editor link
         EditorPage editorPage = welcomePage.clickWYSIWYGEditorLink();
