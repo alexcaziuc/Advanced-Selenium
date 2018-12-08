@@ -4,7 +4,7 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class WelcomePageObject extends BasePageObject{
+public class WelcomePage extends BasePageObject {
 
     private String pageUrl = "http://the-internet.herokuapp.com/";
 
@@ -13,8 +13,9 @@ public class WelcomePageObject extends BasePageObject{
     private By dropdownLinkLocator = By.linkText("Dropdown");
     private By javaScriptAlertsLinkLocator = By.linkText("JavaScript Alerts");
     private By multipleWindowsLinkLocator = By.linkText("Multiple Windows");
+    private By editorLinkLocator = By.linkText("WYSIWYG Editor");
 
-    public WelcomePageObject(WebDriver driver, Logger log) {
+    public WelcomePage(WebDriver driver, Logger log) {
         super(driver, log);
     }
 
@@ -66,5 +67,14 @@ public class WelcomePageObject extends BasePageObject{
         log.info("Clicking Multiple Windows link on Welcome Page");
         click(multipleWindowsLinkLocator);
         return new WindowsPage(driver, log);
+    }
+
+    /**
+     * Open TinyMCE WYSIWYG Editor by clicking on WYSIWYGEditor Link
+     */
+    public EditorPage clickWYSIWYGEditorLink() {
+        log.info("Clicking WYSIWYG Editor link on Welcome Page");
+        click(editorLinkLocator);
+        return new EditorPage(driver, log);
     }
 }
