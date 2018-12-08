@@ -79,4 +79,11 @@
         </classes>
     </test>
 
+    <test name="HoversTests">
+        <classes>
+            <class name="com.herokuapp.theinternet.hoverstests.HoversTests"/>
+        </classes>
+    </test>
+
+
 </suite>
